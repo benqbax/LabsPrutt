@@ -3,6 +3,8 @@ public class Person {
 
     private String nameIn;
     private int ageIn;
+
+    //detta fält ska vara static för att det är inget vi ska ändra på, det ska bara finnas ett nameArray för alla Persons.
     private static String[] nameArray = {"Peter",
                                     "Nils",
                                     "Ben",
@@ -16,7 +18,7 @@ public class Person {
         this.ageIn = ageIn;
     }
 
-    /** constructor for a randomized name*/
+    /** 3.1 constructor for a randomized name*/
     public Person(){
         this.ageIn = (int) (Math.random() * (100-15)) + 15;
         int index = (int) (Math.random() * this.nameArray.length);

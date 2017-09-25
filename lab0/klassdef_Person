@@ -1,0 +1,21 @@
+1.1
+class Person{
+    String nameIn; //namnet på Personen
+    int ageIn;    // åldern på Personen
+
+    Person(String nameIn, int ageIn) //konstruktor, initierar personen
+    toString() //returnerar en String som innehåller data om personens namn och ålder, t.ex: "namn: Putte, ålder: 25 år"
+    getName() //returnerar namnet
+    getAge()  //returnerar åldern
+1.2
+namnet ska vara en string
+Åldern ska vara en int då man oftast säger ålder i heltal
+
+1.3
+toString -> String
+getName() -> String
+getAge()  -> int
+
+
+1.4
+både nameIn och ageIn ska vara privata. Därför används getMetoder för att komma åt dem.
