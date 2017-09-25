@@ -1,4 +1,3 @@
-package lab0;
 
 public class Student extends Person {
     private int year;
