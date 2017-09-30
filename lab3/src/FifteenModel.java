@@ -31,17 +31,40 @@ public class FifteenModel implements Boardgame {
 
     }
 
-    private boolean outOfBounds(int x){
-        boolean inBoundsX = (x >= 0) && (x < 4);
-        return inBoundsX;
+    private boolean inBounds(int x){
+        boolean condition = (x >= 0) && (x < 4);
+        return condition;
     }
 
     @Override
     public boolean move(int i, int j) {
         System.out.println(status[i-1][j]);
-        boolean inBoundsX =outOfBounds(j+1);
+        boolean inBoundsX =inBounds(j+1);
 
-        
+        if(inBounds(i+1) && status[i+1][j] == null){
+            System.out.println("good move1");
+            status[i+1][j] = status[i][j];
+            status[i][j] = null;
+        }
+        else if(inBounds(i-1) && status[i-1][j] == null){
+            System.out.println("good move2");
+            status[i-1][j] = status[i][j];
+            status[i][j] = null;
+        }
+        else if(inBounds(j+1) && status[i][j+1]== null){
+            System.out.println("good move3");
+            status[i][j+1] = status[i][j];
+            status[i][j] = null;
+        }
+        else if(inBounds(j-1) && status[i][j-1]== null){
+            System.out.println("good move4");
+            status[i][j-1] = status[i][j];
+            status[i][j] = null;
+        }
+
+        else{
+            System.out.println("nah");
+        }
 
         System.out.println(inBoundsX);
         return false;
