@@ -1,6 +1,10 @@
 public class FifteenModel implements Boardgame {
     private String currentMessage = "No message yet";
     private String[][] status = new String[4][4];  // spelplanen
+    private int MIN_X=0;
+    private int MIN_Y=0;
+    private int MAX_X=1;
+    private int MAX_Y=1;
     private int xemp, yemp;                        // index till den tomma rutan
 
     public FifteenModel() {
@@ -27,8 +31,19 @@ public class FifteenModel implements Boardgame {
 
     }
 
+    private boolean outOfBounds(int x){
+        boolean inBoundsX = (x >= 0) && (x < 4);
+        return inBoundsX;
+    }
+
     @Override
     public boolean move(int i, int j) {
+        System.out.println(status[i-1][j]);
+        boolean inBoundsX =outOfBounds(j+1);
+
+        
+
+        System.out.println(inBoundsX);
         return false;
     }
 
