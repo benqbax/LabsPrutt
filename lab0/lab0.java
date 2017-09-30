@@ -10,6 +10,7 @@ public class lab0 {
 
         //Del 3:
         ArrayList<Person> personArray = new ArrayList<Person>();
+
         for(int j=0; j<14; j++){
             personArray.add(new Person());
         }
@@ -19,11 +20,15 @@ public class lab0 {
         }
 
         //Del 4:
-     /*   for(int i = 0; i<5; i++){
-            System.out.println(new Student());
-            System.out.println(new Person());
+        ArrayList<Person> pandstudArray = new ArrayList<Person>();
+
+      for(int i = 0; i<5; i++){
+            pandstudArray.add(new Student());
+            pandstudArray.add(new Person());
         }
-*/
+        for(Person p:pandstudArray){
+            System.out.println(p);
+        }
 
     }
 }
