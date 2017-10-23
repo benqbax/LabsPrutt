@@ -1,5 +1,5 @@
 public interface Boardgame {
-    public void move(int x, int y);
-    public String getStatus(int x, int y);
-    public String getMessage();
+    public boolean move(int i, int j); //ger true om draget gick bra, annars false
+    public String getStatus(int i, int j); // returnera innehåll på ruta (i,j)
+    public String getMessage(); // returnera OK (eller liknande) eller felmeddelande avseende senaste drag
 }

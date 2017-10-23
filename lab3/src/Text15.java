@@ -4,11 +4,11 @@ public class Text15 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         Boardgame thegame = new FifteenModel();                 // Model object is created
-
         System.out.println("\nWelcome to fifteen puzzle\n");
 
+            ViewControlFM vc = new ViewControlFM(thegame,4);
 
-        while (true) {
+       /* while (true) {
             // Print the current board
             for (int i=0; i<4; i++) {
                 for (int j=0; j<4; j++)
@@ -22,7 +22,7 @@ public class Text15 {
             thegame.move(i,j);	                             // move
             System.out.println(thegame.getMessage());	     // getMessage
         }
-
+*/
 
     }
 }

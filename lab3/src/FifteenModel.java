@@ -9,6 +9,7 @@ public class FifteenModel implements Boardgame {
     private int xemp, yemp;                        // index till den tomma rutan
 
     public FifteenModel() {
+
         //populate the board
         populateSortedBoard();
         //shuffles the board
@@ -110,11 +111,10 @@ public class FifteenModel implements Boardgame {
         ArrayList<Pair> availMoves = validMoves(xemp, yemp);
         if(availMoves.contains(new Pair(i,j))){
             currentMessage="OK";
-            status[xemp][yemp]= status[i][j];
+            status[xemp][yemp] = status[i][j];
             status[i][j] = null;
             xemp = i;
             yemp = j;
-
         }
         else{
             currentMessage="Please choose a position next to the empty one!";

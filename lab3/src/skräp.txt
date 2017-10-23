@@ -1,0 +1,56 @@
+public boolean move2(int i, int j) {
+
+        if(!inBounds(i) || !inBounds(j)){
+            currentMessage = "Please choose a position on the board!";
+            return false;
+        }
+
+        if(inBounds(i+1) && status[i+1][j] == null){
+
+            currentMessage="OK";
+
+            //move the numbers
+            status[i+1][j] = status[i][j];
+            status[i][j] = null;
+
+            //set the blank variables
+            xemp = i;
+            yemp = j;
+
+        }
+        else if(inBounds(i-1) && status[i-1][j] == null){
+            currentMessage="OK";
+            status[i-1][j] = status[i][j];
+            status[i][j] = null;
+
+            //set the blank variables
+            xemp = i;
+            yemp = j;
+        }
+        else if(inBounds(j+1) && status[i][j+1]== null){
+            currentMessage="OK";
+            status[i][j+1] = status[i][j];
+            status[i][j] = null;
+
+            //set the blank variables
+            xemp = i;
+            yemp = j;
+        }
+        else if(inBounds(j-1) && status[i][j-1]== null){
+            currentMessage="OK";
+            status[i][j-1] = status[i][j];
+            status[i][j] = null;
+
+            //set the blank variables
+            xemp = i;
+            yemp = j;
+        }
+
+        else{
+            currentMessage="Please choose a position next to the empty one!";
+            return false;
+        }
+
+
+        return true;
+    }
