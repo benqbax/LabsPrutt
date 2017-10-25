@@ -10,15 +10,17 @@ public class ViewControlFM extends JFrame implements ActionListener {
     private Boardgame game;
     private int size; //
     private Square[][] board;
-    private JLabel mess = new JLabel(" ");
+    private JLabel mess = new JLabel();
+
 
     ViewControlFM(Boardgame gm, int n) {
         // Create a new board by creating a new FifteenModel object
         // read from getStatus in new object to populate Square[][]
         // Create new JFrame and set set an matrix 4x4
         // add JLabel with message
-
+        size = n;
         this.game = gm;
+        mess.setText(game.getMessage());
         board = new Square[n][n];
 
         // TODO Tidy up the layout
@@ -45,14 +47,13 @@ public class ViewControlFM extends JFrame implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         populateBoard(panelGame);
-
-        frame.pack();
+        frame.setSize(500,500);
 
     }
 
     private void populateBoard(JPanel panel) {
-        for (int i=0; i < 4; i++) {
-            for (int j=0; j < 4; j++) {
+        for (int i=0; i < size; i++) {
+            for (int j=0; j < size; j++) {
                 String squareText = game.getStatus(i,j);
                 Square sq = new Square(i,j, squareText);
                 sq.setText(squareText);
@@ -83,8 +84,8 @@ public class ViewControlFM extends JFrame implements ActionListener {
 
     private void updateBoard() {
         // Update the whole board by calling getStatus() from FifteenModel class
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 String squareText = game.getStatus(i, j);
                 board[i][j].setText(squareText);
             }

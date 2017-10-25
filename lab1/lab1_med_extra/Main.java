@@ -1,3 +1,4 @@
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +10,12 @@ public class Main {
            // MyButton onButton = new MyButton(Color.white, Color.cyan, "On", "Off");
            // MyButton runButton = new MyButton(Color.green, Color.red, "Run", "Stop");
             frame frame = new frame();
+            frame.setTitle("Ben och Nippe");
             frame.setSize(400,400);
+
+            if(args[0]==null){
+                System.exit(0);
+            }
 
             //Kollar att första argumentet är en siffra
             if(!isNumeric(args[0])){

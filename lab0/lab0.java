@@ -11,7 +11,7 @@ public class lab0 {
         //Del 3:
         ArrayList<Person> personArray = new ArrayList<Person>();
 
-        for(int j=0; j<14; j++){
+        for(int j=0; j<16; j++){
             personArray.add(new Person());
         }
         //printa

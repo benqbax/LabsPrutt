@@ -3,10 +3,10 @@ import java.util.Scanner;
 public class Text15 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        Boardgame thegame = new FifteenModel();                 // Model object is created
+        //Boardgame thegame = new FifteenModel();                 // Model object is created
         System.out.println("\nWelcome to fifteen puzzle\n");
-
-            ViewControlFM vc = new ViewControlFM(thegame,4);
+        Boardgame tictactoe = new Tictactoe();
+            ViewControlFM vc = new ViewControlFM(tictactoe,3);
 
        /* while (true) {
             // Print the current board
