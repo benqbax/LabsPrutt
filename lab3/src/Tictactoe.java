@@ -26,7 +26,7 @@ public class Tictactoe implements Boardgame {
     }
 
     //https://stackoverflow.com/questions/20389890/generating-a-random-number-between-1-and-10-java
-    public static int randInt(int min, int max) {
+    private static int randInt(int min, int max) {
         Random rand = new Random();
         int randomNum = rand.nextInt((max - min) + 1) + min;
         return randomNum;
