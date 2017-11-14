@@ -11,16 +11,16 @@ import java.io.*;
 import java.util.*;
 
 class RPSSkel extends JFrame implements ActionListener {
-    Gameboard myboard, computersboard;
-    SettingsBoard settings;
+    private Gameboard myboard, computersboard;
+    private SettingsBoard settings;
     int counter; // To count ONE ... TWO  and on THREE you play
-    Socket socket;
-    BufferedReader in;
-    PrintWriter out;
-    JButton closebutton;
-    JToggleButton soundToggle;
-    boolean soundToggleState;
-    AudioInputStream as;
+    private Socket socket;
+    private BufferedReader in;
+    private PrintWriter out;
+    private JButton closebutton;
+    private JToggleButton soundToggle;
+    private boolean soundToggleState;
+    private AudioInputStream as;
 
 
     RPSSkel () {
@@ -60,7 +60,7 @@ class RPSSkel extends JFrame implements ActionListener {
 
 
 		myboard = new Gameboard("Myself", this); // Must be changed
-		computersboard = new Gameboard("Computer", this);
+		computersboard = new Gameboard("Computer");
 		JPanel boards = new JPanel();
 		boards.setLayout(new GridLayout(1,2));
 		boards.add(myboard);
@@ -73,7 +73,7 @@ class RPSSkel extends JFrame implements ActionListener {
 		setVisible(true);
         setUpConnection();
     }
-    void setUpConnection(){
+    private void setUpConnection(){
         try {
             socket=new Socket("localhost",4713);
             in=new BufferedReader
@@ -225,42 +225,40 @@ class RPSSkel extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        myboard.resetColor();
+        computersboard.resetColor();
         String raknare="";
         counter++;
 
         switch(counter){
             case 1:
                 raknare="ETT";
+                myboard.setLower(raknare);
                 break;
             case 2:
                 raknare="TVÅ";
+                myboard.setLower(raknare);
                 break;
-
+            case 3:
+                JButton button = (JButton) e.getSource();
+                myboard.markPlayed(button);
+                String move = button.getActionCommand();
+                //System.out.println("You made your move: " + move);
+                counter = 0;
+                out.println(move); out.flush();
+                try {
+                    String compMove = in.readLine();
+                    computersboard.markPlayed(compMove);
+                    checkMove(move, compMove);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+                break;
         }
-        myboard.setLower(raknare);
-
-        JButton button = (JButton) e.getSource();
-        myboard.resetColor();
-        computersboard.resetColor();
-        //System.out.println(counter);
-
-        //when three clicks has been made
-        if(counter==3){
-            myboard.markPlayed(button);
-            String move = button.getActionCommand();
-            //System.out.println("You made your move: " + move);
-            counter = 0;
-            out.println(move); out.flush();
-            try {
-                String compMove = in.readLine();
-                computersboard.markPlayed(compMove);
-                checkMove(move, compMove);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
 
 
-        }
+
+
     }
 }
 
